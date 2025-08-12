@@ -5,6 +5,7 @@ import os
 def show_image():
   imgpath1 = os.path.join(os.getcwd(), 'image/coca-cola-logo.png')
   img = cv.imread(imgpath1, 1)
+  # 
   b,g,r=cv.split(img)
   rgbImg = img[:,:,::-1]
   built_inrgb=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
