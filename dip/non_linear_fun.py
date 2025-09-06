@@ -44,23 +44,29 @@ def build_nonlinear():
     plt.figure(figsize=(10,10))
     plt.subplot(3,3,1)
     plt.imshow(img,cmap='grey')
+    plt.title('original image')
     plt.subplot(3,3,2)
     plt.imshow(gamma_img1,cmap='grey')
-
+    plt.title('gamma 0.1')
     plt.subplot(3,3,3)
     plt.imshow(gamma_img2,cmap='grey')
+    plt.title("gamma 0.3")
 
     plt.subplot(3,3,4)
     plt.imshow(gamma_img3,cmap='grey')
+    plt.title("gamma 0.7")
 
     plt.subplot(3,3,5)
     plt.imshow(gamma_img4,cmap='grey')
+    plt.title("gamma 1")
 
-    plt.subplot(3,3,5)
-    plt.imshow(gamma_img5,cmap='grey')
+    # plt.subplot(3,3,5)
+    # plt.imshow(gamma_img5,cmap='grey')
 
     plt.subplot(3,3,6)
     plt.imshow(log_img,cmap='grey')
 
     plt.show()
 
+if __name__=='__main__':
+    build_nonlinear()
