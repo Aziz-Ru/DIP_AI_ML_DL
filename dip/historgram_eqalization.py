@@ -1,5 +1,5 @@
-import cv2 as cv 
-import matplotlib.pyplot as plt 
+import cv2 as cv
+import matplotlib.pyplot as plt
 import os
 import numpy as np
 
@@ -12,8 +12,7 @@ def build_histrogram():
         return
 
     hist = cv.calcHist([img], [0], None, [256], [0, 256])
-    # print(hist)
-    pdf= hist / hist.sum()
+    pdf = hist / hist.sum()
     cdf = pdf.cumsum()
 
     plt.figure(figsize=(10, 5))
@@ -34,15 +33,21 @@ def build_histrogram():
     plt.title("CDF")
     plt.plot(cdf)
 
-    # final_img= cv.equalizeHist(img)
-    plt.figure(10,10)
+    # Show original image with matplotlib
+    plt.figure(figsize=(10,10))
     plt.subplot(2,2,1)
-    cv.imshow("original image", img.astype(np.uint8))
+    plt.title("Original Image")
+    plt.imshow(img, cmap='gray')
+    plt.axis("off")
 
+    # Equalized image (optional)
+    # final_img = cv.equalizeHist(img)
     # plt.subplot(2,2,2)
-    # cv.imshow("equalized image", final_img.astype(np.uint8))
+    # plt.title("Equalized Image")
+    # plt.imshow(final_img, cmap='gray')
+    # plt.axis("off")
 
     plt.show()
 
-if __name__=='__main__':
+if __name__ == '__main__':
     build_histrogram()
