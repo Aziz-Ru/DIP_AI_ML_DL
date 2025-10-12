@@ -129,6 +129,12 @@ wheels = [
 ]
 
 [[package]]
+name = "glob2"
+version = "0.7"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d7/a5/bbbc3b74a94fbdbd7915e7ad030f16539bfdc1362f7e9003b594f0537950/glob2-0.7.tar.gz", hash = "sha256:85c3dbd07c8aa26d63d7aacee34fa86e9a91a3873bc30bf62ec46e531f92ab8c", size = 10697, upload-time = "2019-06-10T23:33:48.308Z" }
+
+[[package]]
 name = "idna"
 version = "3.10"
 source = { registry = "https://pypi.org/simple" }
@@ -239,12 +245,14 @@ name = "opencv-learn"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "glob2" },
     { name = "pennylane" },
     { name = "scikit-image" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "glob2", specifier = ">=0.7" },
     { name = "pennylane", specifier = ">=0.42.3" },
     { name = "scikit-image", specifier = ">=0.25.2" },
 ]
