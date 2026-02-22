@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 img=np.zeros((256,256,3),dtype=np.uint8)
+
 plt.figure(figsize=(15,12))
 colors=["Red","Green","Blue","Yellow","Cyan","Purple"]
 cnt=1

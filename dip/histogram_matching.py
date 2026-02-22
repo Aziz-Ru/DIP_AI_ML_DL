@@ -9,13 +9,17 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage import exposure, img_as_ubyte
-
+import os
 # ----------------------------
 # Load images
 # ----------------------------
 # Replace with your images
-source = cv2.imread("image/tulip.jpeg", cv2.IMREAD_GRAYSCALE)
-reference = cv2.imread("image/image.jpg", cv2.IMREAD_GRAYSCALE)
+paths =os.getcwd().split(os.sep)
+paths.pop()
+imgpath1 = os.path.join(os.sep.join(paths), 'image/flower.jpeg')
+imgpath2 = os.path.join(os.sep.join(paths), 'image/tulip.jpeg')
+source = cv2.imread(imgpath1, cv2.IMREAD_GRAYSCALE)
+reference = cv2.imread(imgpath2, cv2.IMREAD_GRAYSCALE)
 
 if source is None or reference is None:
     raise FileNotFoundError("One or both image paths are incorrect or images not found.")
@@ -29,9 +33,9 @@ reference = img_as_ubyte(reference / 255.0) if reference.max() <= 1 else referen
 # ----------------------------
 matched_builtin = exposure.match_histograms(source, reference)
 
-# ----------------------------
+
 # Custom Implementation #1: CDF Mapping
-# ----------------------------
+
 def hist_match_cdf(source, reference):
     # Flatten
     src_values, bin_idx, src_counts = np.unique(source.ravel(), return_inverse=True, return_counts=True)
