@@ -9,3 +9,7 @@ wheels/
 # Virtual environments
 .venv
 datasets/
+DL/data/
+DL/dataset/
+DL/results/
+DL/checkpoints/
