@@ -13,3 +13,6 @@ DL/data/
 DL/dataset/
 DL/results/
 DL/checkpoints/
+/weights
+DL/siamese_vit_vggface2.pth
+DL/tinyvit_faceid.pth

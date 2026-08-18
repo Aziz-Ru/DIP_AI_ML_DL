@@ -7,9 +7,10 @@ def cifar10_dataloader(batch_size=64, num_workers=2):
     # Normalization values for CIFAR-10
     mean = (0.4914, 0.4822, 0.4465)
     std  = (0.2470, 0.2435, 0.2616)
-
+    
     # Train transforms (with augmentation)
     train_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
         transforms.RandomHorizontalFlip(),
         transforms.RandomCrop(32, padding=4),
         transforms.ToTensor(),
@@ -18,6 +19,7 @@ def cifar10_dataloader(batch_size=64, num_workers=2):
 
     # Test transforms (no augmentation)
     test_transform = transforms.Compose([
+        transforms.Resize((224, 224)),
         transforms.ToTensor(),
         transforms.Normalize(mean, std)
     ])
