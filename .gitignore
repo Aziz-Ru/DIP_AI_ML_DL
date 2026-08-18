@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 *.egg-info
+/ML/datasets/
 
 # Virtual environments
 .venv
