@@ -1,22 +1,49 @@
 import random
-import math
 
-def lehmann_test(p, iterations=20):
-    if p < 4:
-        return p == 2 or p == 3
-    if p % 2 == 0:
+
+def miller_rabin(n, k=5):
+
+    # Step 1: Handle small numbers
+    if n < 2:
         return False
 
-    for _ in range(iterations):
-        a = random.randint(2, p - 2)
-        if math.gcd(a, p) != 1:
-            return False
-        result = pow(a, (p - 1) // 2, p)
-        if result != 1 and result != p - 1:
-            return False       # definitely composite
-    return True                # probably prime
+    if n == 2 or n == 3:
+        return True
 
-# Example
-if __name__ == "__main__":
-    P = int(input("Enter number P: ") or 104729)
-    print(f"{P} is {'PRIME' if lehmann_test(P) else 'COMPOSITE'} (Lehmann test)")
+    if n % 2 == 0:
+        return False
+
+    # Step 2:
+    # n - 1 = d * 2^s
+    d = n - 1
+    s = 0
+
+    while d % 2 == 0:
+        d //= 2
+        s += 1
+
+    # Step 3: Repeat k times
+    for _ in range(k):
+
+        # Random number: 2 <= a <= n-2
+        a = random.randrange(2, n - 1)
+
+        # x = a^d mod n
+        x = pow(a, d, n)
+
+        # If x = 1 or n-1, this round passes
+        if x == 1 or x == n - 1:
+            continue
+
+        # Square x repeatedly
+        for _ in range(s - 1):
+
+            x = pow(x, 2, n)
+
+            if x == n - 1:
+                break
+
+        else:
+            return False
+
+    return True

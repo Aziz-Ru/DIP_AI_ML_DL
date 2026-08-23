@@ -19,11 +19,11 @@ def transpostion_decrypt(cipher:str,width:int =4):
     grid = ['']*rows
     # print(grid)
     idx =0
-    for col in range(width):
-        for row in range(rows):
+    for row in range(rows):
             if idx <len(cipher):
                 grid[row]+=cipher[idx]
                 idx+=1
+        
 
     pt= ''.join(grid)
     return pt.rstrip('X')
